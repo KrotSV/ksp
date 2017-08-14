@@ -5,6 +5,8 @@ import spring.tutorial.interfaces.EventLogger;
 
 class ConsoleEventLogger implements EventLogger{
 
+  Event event;
+
   public ConsoleEventLogger() {
   }
 
@@ -22,8 +24,9 @@ class ConsoleEventLogger implements EventLogger{
     this.event = event;
   }
 
-  Event event;
-  public void logEvent(String msg){
+  public void logEvent(Event event){
     System.out.println(event.toString());
   }
+
+
 }

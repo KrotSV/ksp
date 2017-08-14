@@ -3,6 +3,7 @@ package spring.tutorial;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.tutorial.bins.Client;
+import spring.tutorial.bins.Event;
 import spring.tutorial.interfaces.EventLogger;
 
 public class App {
@@ -17,13 +18,16 @@ public class App {
   public static void main(String[] args) {
     ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
     App app = (App) ctx.getBean("app");
-    app.logEvent("some event for 3");
-    app.logEvent("some event for 1");
+    Event event =  ctx.getBean(Event.class);
+
+    app.logEvent(event, "some event for 3");
+    app.logEvent(event, "some event for 1");
   }
 
-  private void logEvent(String msg){
+  private void logEvent(Event event, String msg){
     String message = msg.replaceAll(client.getId(), client.getFullName());
-    eventLogger.logEvent(message);
+    event.setMsg(message);
+    eventLogger.logEvent(event);
   }
 
   public Client getClient() {

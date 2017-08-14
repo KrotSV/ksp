@@ -4,7 +4,7 @@ public class Client {
   private String id;
   private String fullName;
 
-  String getId() {
+  public String getId() {
     return id;
   }
 
@@ -17,7 +17,7 @@ public class Client {
     this.id = id;
   }
 
-  String getFullName() {
+  public String getFullName() {
     return fullName;
   }
 
